@@ -25,7 +25,6 @@ namespace WielkieKino.Dane
             bool odp = false;
             foreach (Bilet b in sprzedaneBilety)
             {
-                
                 if(b.Miejsce == miejsce && b.Rzad == rzad && b.Seans.Film == seans.Film && b.Seans.Sala == seans.Sala && b.Seans.Date == seans.Date)
                 {
                     odp = false;
@@ -51,7 +50,11 @@ namespace WielkieKino.Dane
         {
             // np. nie można zagrać filmu "Egzamin" w sali Kameralnej 2019-01-20 o 17:00
             // można natomiast zagrać "Egzamin" w tej sali 2019-01-20 o 14:00
-            return false;
+            bool dodanie = false;
+
+
+
+            return dodanie;
         }
 
         /// <summary>
@@ -63,7 +66,16 @@ namespace WielkieKino.Dane
         public int LiczbaWolnychMiejscWSali(List<Bilet> sprzedaneBilety, Seans seansDoSprawdzenia)
         {
             // Właściwa odpowiedź: np. na pierwszy seans z listy seansów w klasie SkladDanych są 72 miejsca
-            return 0;
+            int liczbaMiejsc = 0;
+            foreach(Bilet b in sprzedaneBilety)
+            {
+                if(b.Seans.Film == seansDoSprawdzenia.Film)
+                {
+                    liczbaMiejsc = +1;
+                }
+            }
+
+            return liczbaMiejsc;
         }
 
         public double CalkowitePrzychodyZBiletow(List<Bilet> sprzedaneBilety)
@@ -71,7 +83,7 @@ namespace WielkieKino.Dane
             double dochod = 0.0;
             foreach(Bilet sprzedane in sprzedaneBilety)
             {
-                dochod = +sprzedane.Cena;
+                dochod =+ sprzedane.Cena;
             };
             
             // Właściwa odpowiedź: 400.00
