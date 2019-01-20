@@ -67,6 +67,10 @@
       <Project>{BEE3161F-C21F-4FCC-B73C-8146F7D207E8}</Project>
       <Name>WielkieKino.Dane</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WielkieKino.Lib\WielkieKino.Lib.csproj">
+      <Project>{FCB35363-BFE5-4984-8448-175C9CE54C8C}</Project>
+      <Name>WielkieKino.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

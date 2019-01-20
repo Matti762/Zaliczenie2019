@@ -22,12 +22,20 @@ namespace WielkieKino.Dane
         /// <returns></returns>
         public bool CzyMoznaKupicBilet(List<Bilet> sprzedaneBilety, Seans seans, int rzad, int miejsce)
         {
-            foreach(Bilet b in sprzedaneBilety)
+            bool odp = false;
+            foreach (Bilet b in sprzedaneBilety)
             {
-                if(b.Miejsce)
+                
+                if(b.Miejsce == miejsce && b.Rzad == rzad && b.Seans.Film == seans.Film && b.Seans.Sala == seans.Sala && b.Seans.Date == seans.Date)
+                {
+                    odp = false;
+                }
+                else
+                {
+                    odp = true;
+                }
             }
-
-            return false;
+            return odp;
         }
 
         /// <summary>
@@ -60,8 +68,14 @@ namespace WielkieKino.Dane
 
         public double CalkowitePrzychodyZBiletow(List<Bilet> sprzedaneBilety)
         {
+            double dochod = 0.0;
+            foreach(Bilet sprzedane in sprzedaneBilety)
+            {
+                dochod = +sprzedane.Cena;
+            };
+            
             // Właściwa odpowiedź: 400.00
-            return 0.0;
+            return dochod;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WielkieKino.Lib;
 
 namespace WielkieKino.Dane.Tests
 {
@@ -32,7 +33,12 @@ namespace WielkieKino.Dane.Tests
         [TestMethod()]
         public void CalkowitePrzychodyZBiletowTest()
         {
-            Assert.Fail();
+            List<Bilet> bilety = SkladDanych.Bilety;
+
+            MetodyPomocnicze mp = new MetodyPomocnicze();
+
+            Assert.IsTrue(mp.CalkowitePrzychodyZBiletow(bilety) == 400);
+
         }
     }
 }
