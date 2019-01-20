@@ -1,7 +1,7 @@
 #Zaliczenie z LINQ (max. 14 punktów)
 Punktacja:
 1. Ka¿da z metod w klasie DataProcessing z biblioteki WielkieKino.Logic - po jednym punkcie.
-
+//8
 2. Do trzech wybranych metod z klasy DataProcessing nale¿y napisaæ testy:
 	- stworzyæ projekt testowy
 	- dodaæ metody testowe z wywo³aniem metod z klasy testowanej i asercjami
@@ -9,11 +9,11 @@ Punktacja:
 Uwaga: Za ka¿dy test mo¿na dostaæ jeden punkt. Testy oceniane s¹ niezale¿nie od implementacji
 metod z klasy DataProcessing (czyli test nie musi przechodziæ, jeœli metoda jest Ÿle napisana
 lub nie posiada implementacji).
-
+//3?
 3. Utworzenie bazy danych umo¿liwiaj¹cej przechowywanie danych z klas WielkieKino.Lib - 3 punkty.
 Uwaga:Metoda tworzenia bazy danych jest dowolna - np. Code First Conventions. Do bazy nale¿y
 zapisaæ przyk³adowe dane (min. po jednym rekordzie do ka¿dej tabeli).
-
+//3
 ## Oceny
 0 - 6 punktów -> 2
 7-8 punktów -> 3

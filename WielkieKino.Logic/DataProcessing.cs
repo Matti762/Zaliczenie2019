@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -128,5 +129,50 @@ namespace WielkieKino.Logic
         }
 
 
+        //WielkieKinoInitializer.Seed()
+
+
+
     }
+
+    //public class CreateDatabaseIfNotExists<WielkieKinoInitializer> :
+    //    IDatabaseInitializer<WielkieKinoInitializer> where WielkieKinoInitializer : DbContext
+    //{
+
+    //}
+    //DropCreateDatabaseIfModelChanges
+    public class WielkieKinoInitializer : CreateDatabaseIfNotExists<ModelDataProcessing>
+    {
+
+        protected override void Seed(ModelDataProcessing context)
+        {
+            List<Bilet> bilety = new List<Bilet>();
+            bilety.ForEach(b => context.Bilety.Add(b));
+            context.SaveChanges();
+            List<Film> filmy = new List<Film>();
+            filmy.ForEach(f => context.Filmy.Add(f));
+            context.SaveChanges();
+            List<Sala> sale = new List<Sala>();
+            sale.ForEach(s => context.Sale.Add(s));
+            context.SaveChanges();
+            List<Seans> seanse = new List<Seans>();
+            seanse.ForEach(se => context.Seanse.Add(se));
+            context.SaveChanges();
+        }
+
+            }
+
+
+    public class ModelDataProcessing : DbContext
+    {
+        public ModelDataProcessing(): base("ModelDataProcessing")
+        {
+
+        }
+        public DbSet<Film>  Filmy   { get; set; }
+        public DbSet<Bilet> Bilety  { get; set; }
+        public DbSet<Sala>  Sale    { get; set; }
+        public DbSet<Seans> Seanse  { get; set; }
+    }
+
 }
