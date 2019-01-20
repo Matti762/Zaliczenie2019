@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WielkieKino.Dane;
 using WielkieKino.Lib;
 
 namespace WielkieKino.App
@@ -20,6 +21,7 @@ namespace WielkieKino.App
         private static void WyswietlPodgladSali(List<Bilet> sprzedaneBilety, Seans seans)
         {
 
+
         }
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace WielkieKino.App
 
         public static void Main(string[] args)
         {
-            WyswietlPodgladSali(Dane.SkladDanych.Bilety, Dane.SkladDanych.Seanse[0]);
+            //WyswietlPodgladSali(Dane.SkladDanych.Bilety, Dane.SkladDanych.Seanse[0]);
             /* Przykładowo:
             ----------
             ----------
@@ -47,6 +49,39 @@ namespace WielkieKino.App
             -----oo---
             ----------
             */
+
+            //MetodyPomocnicze mp = new MetodyPomocnicze();
+            //List<Bilet> bilety = SkladDanych.Bilety;
+            //Seans seans = SkladDanych.Seanse[0];
+            //bool a, b;
+            //a = mp.CzyMoznaKupicBilet(bilety, seans, 1, 1);
+            //b = mp.CzyMoznaKupicBilet(bilety, seans, 5, 5);
+            //Console.WriteLine($"Pierwsze {a} drugie {b}");
+            //Console.ReadKey();
+
+            //List<Seans> seanse = SkladDanych.Seanse;
+            ////Sala kameralna - egzamin
+            //Sala sala1 = SkladDanych.Sale[2];
+            //Film film1 = SkladDanych.Filmy[2];
+            //DateTime dateTime1 = new DateTime(2019, 01, 20, 14, 00, 00); 
+            //DateTime dateTime2 = new DateTime(2019, 01, 20, 17, 00, 00);
+            //DateTime dateTime3 = new DateTime(2019, 01, 20, 16, 00, 00);
+            //DateTime dateTime4 = new DateTime(2019, 01, 20, 17, 30, 00);
+
+
+
+            //bool p, d,t,c;
+            //p = mp.CzyMoznaDodacSeans(seanse, sala1, film1, dateTime1);//true
+            //d = mp.CzyMoznaDodacSeans(seanse, sala1, film1, dateTime2);//false
+            //t = mp.CzyMoznaDodacSeans(seanse, sala1, film1, dateTime2);//false
+            //c = mp.CzyMoznaDodacSeans(seanse, sala1, film1, dateTime2);//false
+
+            //Console.WriteLine($"Pierwsze {p} drugie {d} trzecie{t} czwarte{c}");
+            //Console.ReadKey();
+            //Assert.IsTrue(mp.CzyMoznaDodacSeans(seanse, sala1, film1, dateTime1));
+
+
+
         }
     }
 }

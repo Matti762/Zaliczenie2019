@@ -23,11 +23,19 @@ namespace WielkieKino.Dane
         public bool CzyMoznaKupicBilet(List<Bilet> sprzedaneBilety, Seans seans, int rzad, int miejsce)
         {
             bool odp = false;
+            bool miejsc, rzaad, fiiilm, saaala;
             foreach (Bilet b in sprzedaneBilety)
             {
-                if(b.Miejsce == miejsce && b.Rzad == rzad && b.Seans.Film == seans.Film && b.Seans.Sala == seans.Sala && b.Seans.Date == seans.Date)
+                miejsc = (b.Miejsce == miejsce);
+                rzaad = (b.Rzad == rzad);
+                fiiilm = (b.Seans.Film == seans.Film);
+                saaala = (b.Seans.Sala == seans.Sala);
+
+                if (b.Miejsce == miejsce && b.Rzad == rzad && b.Seans.Film == seans.Film 
+                    && b.Seans.Sala == seans.Sala)
                 {
                     odp = false;
+                    return odp;
                 }
                 else
                 {
@@ -51,8 +59,33 @@ namespace WielkieKino.Dane
             // np. nie można zagrać filmu "Egzamin" w sali Kameralnej 2019-01-20 o 17:00
             // można natomiast zagrać "Egzamin" w tej sali 2019-01-20 o 14:00
             bool dodanie = false;
+            TimeSpan     poczatekFilmu
+                        ,koniecFilmu
+                        ,poczatekSeansu
+                        ,koniecSenansu;
+            foreach(Seans s in aktualneSeanse)
+            {
+                TimeSpan czasSeansu = TimeSpan.FromMinutes(s.Film.CzasTrwania);
+                TimeSpan czasFilmu = TimeSpan.FromMinutes(film.CzasTrwania);
 
+                poczatekFilmu = data.TimeOfDay;
+                koniecFilmu = (data.TimeOfDay + czasFilmu);
+                poczatekSeansu = s.Date.TimeOfDay;
+                koniecSenansu = (s.Date.TimeOfDay + czasSeansu);
 
+                if (s.Sala.Nazwa == sala.Nazwa 
+                    && s.Date.DayOfYear == data.DayOfYear 
+                    && !(poczatekSeansu <= poczatekFilmu && koniecSenansu >= poczatekFilmu)
+                    && !(poczatekSeansu <= koniecFilmu && koniecSenansu >= koniecFilmu)
+                    )
+                {
+                    dodanie = true;
+                }
+                else
+                {
+                    dodanie = false;
+                }
+            }
 
             return dodanie;
         }
@@ -66,16 +99,18 @@ namespace WielkieKino.Dane
         public int LiczbaWolnychMiejscWSali(List<Bilet> sprzedaneBilety, Seans seansDoSprawdzenia)
         {
             // Właściwa odpowiedź: np. na pierwszy seans z listy seansów w klasie SkladDanych są 72 miejsca
-            int liczbaMiejsc = 0;
+            int liczbaMiejscZajetych = 0;
             foreach(Bilet b in sprzedaneBilety)
             {
                 if(b.Seans.Film == seansDoSprawdzenia.Film)
                 {
-                    liczbaMiejsc = +1;
+                    liczbaMiejscZajetych ++;
                 }
             }
+            int pojemnoscSali = seansDoSprawdzenia.Sala.LiczbaMiejscWRzedzie * seansDoSprawdzenia.Sala.LiczbaRzedow;
+            int iloscDostepnychMiejsc = pojemnoscSali - liczbaMiejscZajetych;
 
-            return liczbaMiejsc;
+            return iloscDostepnychMiejsc;
         }
 
         public double CalkowitePrzychodyZBiletow(List<Bilet> sprzedaneBilety)
@@ -83,7 +118,7 @@ namespace WielkieKino.Dane
             double dochod = 0.0;
             foreach(Bilet sprzedane in sprzedaneBilety)
             {
-                dochod =+ sprzedane.Cena;
+                dochod = dochod + sprzedane.Cena;
             };
             
             // Właściwa odpowiedź: 400.00

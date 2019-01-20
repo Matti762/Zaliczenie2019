@@ -74,7 +74,6 @@ namespace WielkieKino.Logic
             List<Sala> saleSort = (from Sala s in sale
                                    orderby s.LiczbaMiejscWRzedzie * s.LiczbaRzedow descending
                                    select s).ToList();
-
             return saleSort;
         }
 
