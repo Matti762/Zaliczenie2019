@@ -31,8 +31,8 @@ namespace WielkieKino.Dane
                 fiiilm = (b.Seans.Film == seans.Film);
                 saaala = (b.Seans.Sala == seans.Sala);
 
-                if (b.Miejsce == miejsce && b.Rzad == rzad && b.Seans.Film == seans.Film 
-                    && b.Seans.Sala == seans.Sala)
+                if (b.Miejsce == miejsce && b.Rzad == rzad && b.Seans.Film.Tytul == seans.Film.Tytul 
+                    && b.Seans.Sala.Nazwa == seans.Sala.Nazwa)
                 {
                     odp = false;
                     return odp;

@@ -85,8 +85,9 @@ namespace WielkieKino.Dane
                 });
 
             Bilety = new List<Bilet>();
+            Bilety.Add(new Bilet(Seanse[0], 20.00, 1, 2));
             Bilety.Add(new Bilet(Seanse[0], 20.00, 5, 5));
-            Bilety.Add(new Bilet(Seanse[0], 20.00, 5, 6));
+            //Bilety.Add(new Bilet(Seanse[0], 20.00, 5, 6));
             Bilety.Add(new Bilet(Seanse[0], 20.00, 5, 7));
             Bilety.Add(new Bilet(Seanse[0], 20.00, 6, 5));
             Bilety.Add(new Bilet(Seanse[0], 20.00, 6, 6));

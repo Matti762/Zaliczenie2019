@@ -21,6 +21,7 @@ namespace WielkieKino.Dane.Tests
 
 
             Assert.IsTrue (mp.CzyMoznaKupicBilet(bilety, seans, 1, 1));
+            Assert.IsFalse(mp.CzyMoznaKupicBilet(bilety, seans, 1, 2));
             Assert.IsFalse(mp.CzyMoznaKupicBilet(bilety, seans, 5, 5));
 
         }

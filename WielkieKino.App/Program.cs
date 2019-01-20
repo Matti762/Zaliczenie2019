@@ -20,8 +20,25 @@ namespace WielkieKino.App
         /// <param name="seans"></param>
         private static void WyswietlPodgladSali(List<Bilet> sprzedaneBilety, Seans seans)
         {
-
-
+            MetodyPomocnicze mp = new MetodyPomocnicze();
+            int miejsce, rzad;
+            miejsce = seans.Sala.LiczbaMiejscWRzedzie;
+            rzad = seans.Sala.LiczbaRzedow;
+            for(int i = 1; i <= rzad; i++)
+            {
+                for(int j = 1; j <= miejsce; j++)
+                {
+                    if (mp.CzyMoznaKupicBilet(sprzedaneBilety, seans, i, j))
+                    {
+                        Console.Write("-");
+                    }
+                    else
+                    {
+                        Console.Write("o");
+                    }
+                }
+                Console.WriteLine();
+            }
         }
 
         /// <summary>
@@ -38,7 +55,7 @@ namespace WielkieKino.App
 
         public static void Main(string[] args)
         {
-            //WyswietlPodgladSali(Dane.SkladDanych.Bilety, Dane.SkladDanych.Seanse[0]);
+            WyswietlPodgladSali(Dane.SkladDanych.Bilety, Dane.SkladDanych.Seanse[0]);
             /* Przykładowo:
             ----------
             ----------
@@ -57,7 +74,7 @@ namespace WielkieKino.App
             //a = mp.CzyMoznaKupicBilet(bilety, seans, 1, 1);
             //b = mp.CzyMoznaKupicBilet(bilety, seans, 5, 5);
             //Console.WriteLine($"Pierwsze {a} drugie {b}");
-            //Console.ReadKey();
+            Console.ReadKey();
 
             //List<Seans> seanse = SkladDanych.Seanse;
             ////Sala kameralna - egzamin
